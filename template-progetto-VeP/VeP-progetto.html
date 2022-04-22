@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!-- VeP http://web.unibas.it/bloisi/corsi/visione-e-percezione.html -->
+<html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Object 3D</title>
+	<!-- Meta -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descrizione del progetto">
+    <meta name="author" content="Domenico Bloisi adapted a 3rd Wave Media template">    
+    <link rel="shortcut icon" href="http://web.unibas.it/bloisi/tutorial/favicon.ico">  
+    <link href="VeP-progetto_files/css.txt" rel="stylesheet" type="text/css">
+    <link href="VeP-progetto_files/css1.txt" rel="stylesheet" type="text/css"> 
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="VeP-progetto_files/bootstrap.css">   
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="VeP-progetto_files/font-awesome.css">
+        
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="VeP-progetto_files/styles.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+</head> 
+
+<body>
+    <!-- ******HEADER****** --> 
+    <header class="header">
+        <div class="container">                       
+            <img class="profile-image img-responsive pull-left" src="" alt="Inserire immagine qui" hegiht="100" width="100">
+            <div class="profile-content pull-left">
+                <h1 class="name">Object 3D</h1>
+                <h2 class="desc">Tutorial in MediaPipe e grasping con Franka Emika</h2>
+            </div>
+
+            <div class="profile-content pull-right">
+				<img class="profile-image img-responsive pull-left"
+				    src="http://web.unibas.it/bloisi/assets/images/logo.png"
+					alt="unibas logo"
+					height=97 width=312/>
+				
+				<p>&nbsp;</p>
+				<h3 class="desc">
+				<a href="http://web.unibas.it/bloisi/corsi/visione-e-percezione.html"
+				target="_blank">
+				Corso di Visione e Percezione</a>
+				</h3>
+			</div>
+			
+        </div><!--//container-->
+    </header><!--//header-->
+    
+    <div class="container sections-wrapper">
+        <div class="row">
+            <div class="primary col-md-8 col-sm-12 col-xs-12">
+			
+			    <section class="about section">
+                    <div class="section-inner">
+                        <h2 class="heading">Problema</h2>
+                        <div class="content">
+                            <p align = "justify">Rilevamento di oggetti in immagini 2D
+							e stima delle loro posizioni attraverso un modello di ML
+							addestrato sul set di dati Objectron.
+							</p>
+                        </div><!--//content-->
+                    </div><!--//section-inner-->                 
+                </section><!--//section-->
+				
+				<section class="about section">
+                    <div class="section-inner">
+                        <h2 class="heading">Motivazioni</h2>
+                        <div class="content">						
+							<p align = "justify">La detection di oggetti è un problema di computer vision ampiamente studiato, 
+							ma la maggior parte della ricerca si è concentrata sulla previsione di oggetti 2D, 
+							fornendo solo riquadri di delimitazione 2D.
+							<br>
+							Estendendo la previsione al 3D,è possibile acquisire le dimensioni, la posizione e l'orientamento di un oggetto nel mondo,
+							portando a una varietà di applicazioni nella robotica, nei veicoli a guida autonoma, 
+							nel recupero di immagini e nella realtà aumentata.
+							<br>
+							La detection di oggetti 3D da immagini 2D è un problema impegnativo 
+							a causa della mancanza di dati e della diversità di aspetti e forme degli oggetti all'interno di una categoria.
+							</p>
+
+							
+                        </div><!--//content-->
+                    </div><!--//section-inner-->                 
+                </section><!--//section-->
+			
+                <section class="about section">
+                    <div class="section-inner">
+                        <h2 class="heading"><a id="goals"></a>Obiettivi</h2>
+                        <div class="content">
+							<ol>
+								<li>Tutorial multimediale delle funzioni in MediaPipe</li>
+								<li>-</li>
+								<li>-</li>
+							</ol>
+							</p>
+                                                     
+                        </div><!--//content-->
+                    </div><!--//section-inner-->                 
+                </section><!--//section-->
+				
+				<section class="about section">
+                    <div class="section-inner">
+                        <h2 class="heading"><a id="dataset"></a>Metodi</h2>
+                        <div class="content">
+							<ul>
+							    <li>MediaPipe Objectron</li>
+								<li>-</li>
+								<li>-</li>								
+                            </ul>
+							</p>			
+                                                     
+                        </div><!--//content-->
+                    </div><!--//section-inner-->                 
+                </section><!--//section-->
+				
+				<section class="about section">
+                    <div class="section-inner">
+                        <h2 class="heading"><a id="dataset"></a>Implementazione e Codice</h2>
+                        <div class="content">
+                            <p>Descrivere la tecnologia utilizzata per risolvere il problema</p>
+							<p>Per esempio:<br>
+							<ul>
+							    <li>Python 3.7</li>
+								<li>Google Colab</li>
+								<li>MediaPipe-0.8.9.1</li>
+								<li>ROS Melodic</li>
+								<li>OpenCV 4.1.2</li>								
+                            </ul>
+							</p>
+							<div class="item">
+								<a href="https://github.com/ClaudioCazzetta/VISIONE-E-PERCEZIONE.git" target="_blank">GitHub code</a>
+                            </div>
+							
+                                                     
+                        </div><!--//content-->
+                    </div><!--//section-inner-->                 
+                </section><!--//section-->
+				
+				
+				<section class="about section">
+                    <div class="section-inner">
+                        <h2 class="heading"><a id="dataset"></a>Dataset</h2>
+                        <div class="content">
+                            <p>Descrivere i dati utilizzati fornendo i link per il download</p>
+                            							
+                                                     
+                        </div><!--//content-->
+                    </div><!--//section-inner-->                 
+                </section><!--//section-->
+				
+				<section class="about section">
+                    <div class="section-inner">
+                        <h2 class="heading"><a id="training"></a>Risultati</h2>
+                        <div class="content">
+                            							
+								
+							<h3>Risultati qualitativi</h3>
+							<p>Fornire esempi di applicazione del metodo con immagini e video</p>
+							
+													
+							<h3>Risultati quantitativi</h3>
+							<p>Fornire una descrizione delle performance del metodo usando
+							delle opportune metriche</p>
+							
+							<p>Per esempio:<br>
+							Fornire su un numero di immagini non inferiore a 30 i dati relativi
+							a FP, FN, TP.							
+							</p>
+							
+							
+							
+                        </div><!--//content-->
+                    </div><!--//section-inner-->                 
+                </section><!--//section-->
+                
+            </div><!--//primary-->
+            
+			<div class="secondary col-md-4 col-sm-12 col-xs-12">
+                <aside class="info aside section">
+                    <div class="section-inner">
+                        <h2 class="heading">Autori</h2>
+                        <div class="content">
+                            <p>Claudio Cazzetta</p>
+							<p>Rocchina Valanzano</p>
+                        </div><!--//content-->
+                    </div><!--//section-inner-->                 
+                </aside><!--//aside-->                        
+								
+                             
+                <aside class="blog aside section">
+                    <div class="section-inner">
+                        <h2 class="heading">Riferimenti</h2>
+						<div class="content">
+							
+							<div class="item">
+								<a href="http://web.unibas.it/bloisi/corsi/visione-e-percezione.html"
+								target="_blank">VeP pagina del corso</a>
+							</div>
+							<div class="item">
+								<a href="http://web.unibas.it/bloisi/" target="_blank">Domenico Bloisi's home page</a>
+							</div>
+							<div class="item">
+								<a href="http://spqr.diag.uniroma1.it/" target="_blank">Unibas Wolves Robot Soccer Team</a>
+								<img class="img-responsive project-image"
+								src="http://web.unibas.it/bloisi/assets/images/unibas_wolves_logo.jpg"
+								alt="logo unibas wolves spl"
+								hegiht="200" width="200">
+							</div>
+
+							<div class="item">
+								<a href="http://opencv.org/" target="_blank">OpenCV</a>
+                            </div>
+							
+							<div class="item">
+								<a href="https://google.github.io/mediapipe/solutions/objectron.html" target="_blank">MediaPipe Objectron</a>
+                            </div>
+                        </div><!--//content-->
+                    </div><!--//section-inner-->
+                </aside><!--//section-->                            
+              
+            </div><!--//secondary-->    
+        </div><!--//row-->
+    </div><!--//masonry-->
+    
+    <!-- ******FOOTER****** --> 
+    <footer class="footer">
+        <div class="container text-center">
+                <small class="copyright">This template adapted from <a href="http://themes.3rdwavemedia.com/" target="_blank">3rd Wave Media</a></small>
+        </div><!--//container-->
+    </footer><!--//footer-->
+ 
+ 
+
+ 
+
+</body></html>
