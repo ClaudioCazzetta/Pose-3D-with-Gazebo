@@ -107,9 +107,7 @@
 								<li>Cattura di immagini 2D da clouds points </li>
 								<li>Stima della posa attraverso Objectron di MediaPipe</li>
 								<li>Grasping attraverso il robot in Gazebo</li>
-							</ol>
-							</p>
-                                                     
+							</ol>                  
                         </div><!--//content-->
                     </div><!--//section-inner-->                 
                 </section><!--//section-->
@@ -134,10 +132,7 @@
 								<li>MoveIt</li>
 								<li>RViz</li>
 								<li>Blender</li>
-                            </ul>
-							</p>
-							
-                                                     
+                            </ul>	                                                   
                         </div><!--//content-->
                     </div><!--//section-inner-->                 
                 </section><!--//section-->
@@ -193,17 +188,20 @@
 								Da RViz è possibile abilitare il plugin MoveIt(avviato nel file launch) con cui si effettueranno i vari spostamenti.
 								<div>
 								<img 
-								src=""
+								src="image/gazebo.png"
 								height ="400" width ="800">
 								</div>
 								<div>
 								<img 
-								src=""
+								src="image/RViz.png"
 								height ="400" width ="800">
 								</div>
-							</p>
-							</p>
-							</p>
+								<div>
+								<img 
+								src="image/rosgraph_demo_gazebo.png"
+								height ="400" width ="800">
+								</div>
+							</p>						
 							<h3>Comandi del robot</h3>
 							<p>
 								<code>
@@ -230,7 +228,9 @@
 							<p>
 								Usando i comandi sopra citati, si pone il manipolatore al di sopra dell'oggetto interessato(tazza) in modo da essere inquadrato dal sensore.
 								<code>
-								src/SaveCloudPoint
+								<br>
+								rosrun realsense_gazebo_plugin SaveCloudPoint
+								<br>
 								</code>
 								Attraverso questo script si riesce a ricavare un'immagine RGB dalla nuvola di punti.
 								<div>
@@ -240,6 +240,7 @@
 								</div>
 								Ora è possibile determinare la posa della tazza presente in Gazebo attraverso Objectron di MediaPipe
 								<code>
+								<br>
 								python3 cupobjectrondetection.py
 								</code>
 								<div>
@@ -254,8 +255,10 @@
 							</p>
 							<h3>Grasping</h3>
 							<p>
-								
-								
+							Mancano immagini nuvola di punti + immagine annotata. Da fare tutto il grasping e come immagini la presa. Da checkare i punti di contatto
+							Da ricordarsi di inserire comandi apri pinza + comandi chiudi pinza .
+							
+							</p>	
                         </div><!--//content-->
                     </div><!--//section-inner-->                 
                 </section><!--//section-->
