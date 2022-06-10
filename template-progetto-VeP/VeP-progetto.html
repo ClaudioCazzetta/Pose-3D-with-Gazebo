@@ -191,7 +191,18 @@
 								Il tavolo è stato creato tramite un oggetto box, mentre la tazza è stata creata utilizzando il software Blender.
 								Inoltre verrà avviato il visualizzatore 3D RViz in cui è possibile visualizzare il robot e la nuvola di punti ricavata dal sensore Realsense R200.
 								Da RViz è possibile abilitare il plugin MoveIt(avviato nel file launch) con cui si effettueranno i vari spostamenti.
-								TODO:IMMAGINE
+								<div>
+								<img 
+								src=""
+								height ="400" width ="800">
+								</div>
+								<div>
+								<img 
+								src=""
+								height ="400" width ="800">
+								</div>
+							</p>
+							</p>
 							</p>
 							<h3>Comandi del robot</h3>
 							<p>
@@ -199,20 +210,61 @@
 								rosrun moveit_commander moveit_commander_cmdline.py
 								<br>
 								</code>
-								Attraverso questo comando si possono ordinare al robot vari comandi
+								MoveIt offre un pacchetto python che gestisce in maniera semplice
+								la pianificazione del movimento, il calcolo dei percorsi cartesiani ed altre funzionalità.In particolare,è stata utilizzata l'interfaccia
+								a riga di comando in cui sono state impartite le varie traiettorie che il robot effettua nell'esperimento.
+								<code>
+								<br>
+								use panda_arm
+								<br>
+								go forward/left/up/down/right/backward -distance-
+								<br>
+								</code>
 								<div>
 								<img 
-								src="https://github.com/ClaudioCazzetta/Pose-3D-with-Gazebo/blob/main/template-progetto-VeP/image/cmdline_help.jpg">
+								src="image/cmdline_help.jpg"
+								height ="400" width ="800">
 								</div>
-										
-                                                     
+							</p>
+							<h3>Detection clouds points</h3>
+							<p>
+								Usando i comandi sopra citati, si pone il manipolatore al di sopra dell'oggetto interessato(tazza) in modo da essere inquadrato dal sensore.
+								<code>
+								src/SaveCloudPoint
+								</code>
+								Attraverso questo script si riesce a ricavare un'immagine RGB dalla nuvola di punti.
+								<div>
+								<img 
+								src=""
+								height ="400" width ="800">
+								</div>
+								Ora è possibile determinare la posa della tazza presente in Gazebo attraverso Objectron di MediaPipe
+								<code>
+								python3 cupobjectrondetection.py
+								</code>
+								<div>
+								<img 
+								src=""
+								height ="400" width ="800">
+								</div>
+                                Questo script ci restituisce un'immagine con la posizione della tazza nello spazio attraverso boundary box 3D,
+								posizione e orientamento degli assi.
+								<br>
+								<a href="#Approfondimento" >Approfondimento</a>
+							</p>
+							<h3>Grasping</h3>
+							<p>
+								
+								
                         </div><!--//content-->
                     </div><!--//section-inner-->                 
                 </section><!--//section-->
 				
+
+				
 				<section class="about section">
                     <div class="section-inner">
-                        <h2 class="heading"><a id="dataset"></a>Codice</h2>
+                        <h2 class="heading"><a id="codice"></a>Codice</h2>
                         <div class="content">
 
 							<div class="item">
@@ -261,6 +313,34 @@
                     </div><!--//section-inner-->                 
                 </section><!--//section-->
                 
+				<section class="about section">
+                    <div class="section-inner">
+                        <h2 class="heading"> Approfondimento</h2>
+						<a name = "Approfondimento" > </a>
+						<div class="content">
+							<p align = "justify">
+							MediaPipe Objectron rileva oggetti in immagini 2D e stima le loro pose attraverso un modello di ML addestrato 
+							sul set di dati Objectron. Il set di dati Objectron è una raccolta di brevi video clip incentrati sugli oggetti. 
+							In ogni video, la telecamera si muove attorno all'oggetto, catturandolo da diverse angolazioni. 
+							I dati contengono anche riquadri di delimitazione 3D annotati manualmente per ciascun oggetto, che descrivono la posizione, l'orientamento e le dimensioni dell'oggetto. 
+							Il set di dati sulla tazza  è costituito da 2204 video clip annotati integrati con 546k annotazioni.
+							MediaPipe,inoltre, fornisce anche un api da cui è stato ricavato il Colab utilizzato.
+							<br>
+							Nel Colab creato c'è la possibilità di effettuare la detection
+							sia su immagini statiche e sia su video.Inoltre è possibile settare il numero di oggetti da individuare. Come in ogni detection è possibile configurare
+							il valore di confidenza (detection confidence) che permette di stabilire se il rilevamento è avvenuto correttamente o meno. Si può impostare anche il
+							tracking confidence che stabilisce la robustezza della soluzione (valori più alti di tracking confidence forniscono una robustezza maggiore a discapito 
+							della velocità di esecuzione).
+							<div class="item">
+								<a href="" target="_blank">Cup Detection Colab</a>
+                            </div>
+							</p>
+                                                     
+						</div><!--//content-->
+                    </div><!--//section-inner-->                 
+                </section><!--//section-->
+              
+				
             </div><!--//primary-->
             
 			<div class="secondary col-md-4 col-sm-12 col-xs-12">
@@ -314,8 +394,9 @@
 							
                         </div><!--//content-->
                     </div><!--//section-inner-->
-                </aside><!--//section-->                            
-              
+                </aside><!--//section--> 
+
+
             </div><!--//secondary-->    
         </div><!--//row-->
     </div><!--//masonry-->
