@@ -61,8 +61,15 @@
                         <h2 class="heading">Problema</h2>
                         <div class="content">
                             <p align = "justify">Rilevamento di oggetti in immagini 2D
-							e stima delle loro posizioni attraverso un modello di ML
-							addestrato sul set di dati Objectron.
+							e stima delle loro posizioni 3D attraverso un modello di ML
+							addestrato sul set di dati Objectron. Le immagini 2D vengono
+							prelevate dalle nuvole di punti (clouds points).
+							<br>
+							Per analizzare questo problema il presente elaborato progettuale consta di due parti:
+							<ol>
+								<li>Simulazione del robot Franka Emika Panda</li>
+								<li>Detection della posizione degli oggetti</li>
+							<ol>
 							</p>
                         </div><!--//content-->
                     </div><!--//section-inner-->                 
@@ -78,7 +85,9 @@
 							<br>
 							Estendendo la previsione al 3D,è possibile acquisire le dimensioni, la posizione e l'orientamento di un oggetto nel mondo,
 							portando a una varietà di applicazioni nella robotica, nei veicoli a guida autonoma, 
-							nel recupero di immagini e nella realtà aumentata.
+							nel recupero di immagini e nella realtà aumentata. Un esempio è la simulazione
+							del grasping utilizzando il robot Franka Emika Panda, questa può risultare molto utile in ambiti come l'industria 
+							(ad esempio, robot collaborativi in grado di afferrare gli oggetti con la giusta pose nelle catene di montaggio).
 							<br>
 							La detection di oggetti 3D da immagini 2D è un problema impegnativo 
 							a causa della mancanza di dati e della diversità di aspetti e forme degli oggetti all'interno di una categoria.
@@ -94,9 +103,10 @@
                         <h2 class="heading"><a id="goals"></a>Obiettivi</h2>
                         <div class="content">
 							<ol>
-								<li>Tutorial multimediale delle funzioni in MediaPipe</li>
-								<li>-</li>
-								<li>-</li>
+								<li>Simulazione del robot Franka Emika Panda </li>
+								<li>Cattura di immagini 2D da clouds points </li>
+								<li>Stima della posa attraverso Objectron di MediaPipe</li>
+								<li>Grasping attraverso il robot in Gazebo</li>
 							</ol>
 							</p>
                                                      
@@ -104,16 +114,97 @@
                     </div><!--//section-inner-->                 
                 </section><!--//section-->
 				
+								
+				<section class="about section">
+                    <div class="section-inner">
+                        <h2 class="heading"><a id="dataset"></a>Implementazione</h2>
+                        <div class="content">
+                            <p>Le tecnologie utilizzate sono state:</p>
+							<ul>
+							    <li>Linguaggi:</li>
+								<ul>
+									<li>C++</li>
+									<li>Python 3.7</li>
+								</ul>
+								<li>Google Colab</li>
+								<li>MediaPipe</li>
+								<li>ROS Noetic</li>
+								<li>OpenCV</li>		
+								<li>Gazebo</li>
+								<li>MoveIt</li>
+								<li>RViz</li>
+								<li>Blender</li>
+                            </ul>
+							</p>
+							
+                                                     
+                        </div><!--//content-->
+                    </div><!--//section-inner-->                 
+                </section><!--//section-->
+				
+				
 				<section class="about section">
                     <div class="section-inner">
                         <h2 class="heading"><a id="dataset"></a>Metodi</h2>
                         <div class="content">
-							<ul>
-							    <li>MediaPipe Objectron</li>
-								<li>-</li>
-								<li>-</li>								
-                            </ul>
-							</p>			
+							<h3>Creazione ambiente di lavoro</h3>
+							<p> Inizialmente è stato creato un ambiente di lavoro (catkin) in ROS Noetic 
+								<code>
+								<br>
+								(Nella cartella progetto)
+								<br>
+								source /opt/ros/noetic/setup.bash
+								<br>
+								mkdir -p catkin_ws/src
+								<br>
+								cd catkin_ws/src/
+								<br>
+								catkin_init_workspace
+								<br>
+								cd ..
+								<br>
+								catkin_make
+								<br>
+								source devel/setup.bash
+								</code>
+							</p>
+							<h3>Installazione dipendenze</h3>
+							<p>	
+								Successivamente sono state installate tutte le varie dipendenze e packages attraverso il tutorial fornito dal
+								sito relativo al robot Franka Emika.
+								<br>
+								Oltre alla visualizzazione in Gazebo ed in RViz, è stato installato il plugin MoveIt per facilitare i movimenti
+								<br>
+								All'estremita' del braccio è stato posto un sensore Realsense R200 affinchè si possano effettuare delle acquisizioni di nuvole di punti degli oggetti in Gazebo
+								<br>
+								I link delle varie installazioni sono riportati nel settore relativo ai 
+								<a href="#Riferimenti" >Riferimenti</a>
+							</p>
+							<h3>Simulazione del robot</h3>
+							<p>
+							    <code>
+								roslaunch panda_moveit_config demo_gazebo.launch
+								<br>
+								</code>
+								Avviando il file launch si avvia il simulatore Gazebo nel cui mondo troveremo i modelli di Franka Emika Panda,tavolo,lastre,tazza,illuminazione basata sul sole
+								ed il sensore Realsense R200.
+								Il tavolo è stato creato tramite un oggetto box, mentre la tazza è stata creata utilizzando il software Blender.
+								Inoltre verrà avviato il visualizzatore 3D RViz in cui è possibile visualizzare il robot e la nuvola di punti ricavata dal sensore Realsense R200.
+								Da RViz è possibile abilitare il plugin MoveIt(avviato nel file launch) con cui si effettueranno i vari spostamenti.
+								TODO:IMMAGINE
+							</p>
+							<h3>Comandi del robot</h3>
+							<p>
+								<code>
+								rosrun moveit_commander moveit_commander_cmdline.py
+								<br>
+								</code>
+								Attraverso questo comando si possono ordinare al robot vari comandi
+								<div>
+								<img 
+								src="https://github.com/ClaudioCazzetta/Pose-3D-with-Gazebo/blob/main/template-progetto-VeP/image/cmdline_help.jpg">
+								</div>
+										
                                                      
                         </div><!--//content-->
                     </div><!--//section-inner-->                 
@@ -121,20 +212,11 @@
 				
 				<section class="about section">
                     <div class="section-inner">
-                        <h2 class="heading"><a id="dataset"></a>Implementazione e Codice</h2>
+                        <h2 class="heading"><a id="dataset"></a>Codice</h2>
                         <div class="content">
-                            <p>Descrivere la tecnologia utilizzata per risolvere il problema</p>
-							<p>Per esempio:<br>
-							<ul>
-							    <li>Python 3.7</li>
-								<li>Google Colab</li>
-								<li>MediaPipe-0.8.9.1</li>
-								<li>ROS Melodic</li>
-								<li>OpenCV 4.1.2</li>								
-                            </ul>
-							</p>
+
 							<div class="item">
-								<a href="https://github.com/ClaudioCazzetta/VISIONE-E-PERCEZIONE.git" target="_blank">GitHub code</a>
+								<a href="https://github.com/ClaudioCazzetta/Pose-3D-with-Gazebo" target="_blank">Link repository GitHub</a>
                             </div>
 							
                                                      
@@ -195,7 +277,8 @@
                              
                 <aside class="blog aside section">
                     <div class="section-inner">
-                        <h2 class="heading">Riferimenti</h2>
+                        <h2 class="heading"> Riferimenti </h2>
+						<a name = "Riferimenti" > </a>
 						<div class="content">
 							
 							<div class="item">
@@ -206,11 +289,7 @@
 								<a href="http://web.unibas.it/bloisi/" target="_blank">Domenico Bloisi's home page</a>
 							</div>
 							<div class="item">
-								<a href="http://spqr.diag.uniroma1.it/" target="_blank">Unibas Wolves Robot Soccer Team</a>
-								<img class="img-responsive project-image"
-								src="http://web.unibas.it/bloisi/assets/images/unibas_wolves_logo.jpg"
-								alt="logo unibas wolves spl"
-								hegiht="200" width="200">
+								<a href="https://frankaemika.github.io/docs/installation_linux.html" target="_blank">Franka_ROS e Libfranka</a>
 							</div>
 
 							<div class="item">
@@ -220,6 +299,19 @@
 							<div class="item">
 								<a href="https://google.github.io/mediapipe/solutions/objectron.html" target="_blank">MediaPipe Objectron</a>
                             </div>
+							
+							<div class="item">
+								<a href="http://docs.ros.org/en/kinetic/api/moveit_tutorials/html/doc/getting_started/getting_started.html" target="_blank">MoveIt Plugin</a>
+							</div>
+							
+							<div class="item">
+								<a href="https://github.com/SnehalD14/realsense_gazebo_plugin" target="_blank">RealSense_Gazebo</a>
+							</div>
+							
+							<div class="item">
+								<a href="https://www.blender.org/" target="_blank">Blender</a>
+							</div>
+							
                         </div><!--//content-->
                     </div><!--//section-inner-->
                 </aside><!--//section-->                            
