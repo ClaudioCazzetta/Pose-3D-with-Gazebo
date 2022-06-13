@@ -269,7 +269,7 @@
 								per permettere il grasping.
 								<br>
 								<code>
-								rostopic pub --once /franka_gripper/grasp/goal \franka_gripper/GraspActionGoal \"goal: { width: 0.04, epsilon:{ inner: 0.002, outer: 0.002 }, speed: 0.05, force: 5.0}"
+								rostopic pub --once /franka_gripper/grasp/goal franka_gripper/GraspActionGoal "goal: { width: 0.04, epsilon:{ inner: 0.02, outer: 0.02 }, speed: 0.05, force: 5.0}"
 								</code>
 								<br>
 								Per verificare la tenuta della presa si sposta il manipolatore dandogli una traiettoria casuale.
