@@ -32,7 +32,7 @@
             <img class="profile-image img-responsive pull-left" src="image/franka.jpeg" alt="franka" hegiht="200" width="200">
             <div class="profile-content pull-left">
                 <h1 class="name" align = "center">3D pose estimation</h1>
-                <h2 class="desc" align = "center">Stima della posizione con MediaPipe <br> e simulazione del grasping con Franka Emika</h2>
+                <h2 class="desc" align = "center">Stima della posizione con MediaPipe <br> e simulazione del grasping con Franka Emika Panda</h2>
             </div>	
 
             <div class="profile-content pull-right">
@@ -79,15 +79,15 @@
                     <div class="section-inner">
                         <h2 class="heading">Motivazioni</h2>
                         <div class="content">						
-							<p align = "justify">La detection di oggetti è un problema di computer vision ampiamente studiato, 
+							<p align = "justify">La detection di oggetti è un problema di computer vision ampiamente studiato 	
 							ma la maggior parte della ricerca si è concentrata sulla previsione di oggetti 2D, 
 							fornendo solo riquadri di delimitazione 2D.
 							<br>
-							Estendendo la previsione al 3D,è possibile acquisire le dimensioni, la posizione e l'orientamento di un oggetto nel mondo,
-							portando a una varietà di applicazioni nella robotica, nei veicoli a guida autonoma, 
-							nel recupero di immagini e nella realtà aumentata. Un esempio è la simulazione
+							Estendendo la previsione al 3D è possibile acquisire le dimensioni, la posizione e l'orientamento di un oggetto nel mondo,
+							portando ad una varietà di applicazioni nella robotica, nei veicoli a guida autonoma, 
+							nel recupero di immagini e nella realtà aumentata. <br> Un esempio è la simulazione
 							del grasping utilizzando il robot Franka Emika Panda, questa può risultare molto utile in ambiti come l'industria 
-							(ad esempio, robot collaborativi in grado di afferrare gli oggetti con la giusta pose nelle catene di montaggio).
+							(es. robot collaborativi in grado di afferrare gli oggetti con la giusta posa nelle catene di montaggio).
 							<br>
 							La detection di oggetti 3D da immagini 2D è un problema impegnativo 
 							a causa della mancanza di dati e della diversità di aspetti e forme degli oggetti all'interno di una categoria.
@@ -104,7 +104,7 @@
                         <div class="content">
 							<ol>
 								<li>Simulazione del robot Franka Emika Panda </li>
-								<li>Cattura di immagini 2D da clouds points </li>
+								<li>Cattura di immagini 2D da nuvole di punti </li>
 								<li>Stima della posa attraverso Objectron di MediaPipe</li>
 								<li>Grasping attraverso il robot in Gazebo</li>
 							</ol>                  
@@ -141,7 +141,7 @@
 				<section class="about section">
                     <div class="section-inner">
                         <h2 class="heading"><a id="dataset"></a>Metodi</h2>
-                        <div class="content">
+                        <div class="content" >
 							<h3>Creazione ambiente di lavoro</h3>
 							<p> Inizialmente è stato creato un ambiente di lavoro (catkin) in ROS Noetic
 								<br>
@@ -164,28 +164,27 @@
 								</code>
 							</p>
 							<h3>Installazione dipendenze</h3>
-							<p>	
+							<p align = "justify">	
 								Successivamente sono state installate tutte le varie dipendenze e packages attraverso il tutorial fornito dal
 								sito relativo al robot Franka Emika.
 								<br>
-								Oltre alla visualizzazione in Gazebo ed in RViz, è stato installato il plugin MoveIt per facilitare i movimenti
+								Oltre alla visualizzazione in Gazebo ed in RViz, è stato installato il plugin MoveIt per facilitare i movimenti.
 								<br>
-								All'estremita' del braccio è stato posto un sensore Realsense R200 affinchè si possano effettuare delle acquisizioni di nuvole di punti degli oggetti in Gazebo
+								All'estremità del braccio è stato posto un sensore Realsense R200 affinchè si possano effettuare delle acquisizioni di nuvole di punti degli oggetti in Gazebo.
 								<br>
 								I link delle varie installazioni sono riportati nel settore relativo ai 
-								<a href="#Riferimenti" >Riferimenti</a>
+								<a href="#Riferimenti" >Riferimenti</a>.
 							</p>
 							<h3>Simulazione del robot</h3>
-							<p>
+							<p align = "justify">
 							    <code>
 								roslaunch panda_moveit_config demo_gazebo.launch
 								<br>
 								</code>
-								Avviando il file launch si avvia il simulatore Gazebo nel cui mondo troveremo i modelli di Franka Emika Panda,tavolo,lastre,tazza,illuminazione basata sul sole
-								ed il sensore Realsense R200.
-								Il tavolo è stato creato tramite un oggetto box, mentre la tazza è stata creata utilizzando il software Blender.
+								Avviando il file launch si avvia il simulatore Gazebo nel cui mondo troveremo i modelli di Franka Emika Panda, tavolo, lastre di appoggio, tazza, illuminazione basata sul sole ed il sensore Realsense R200. <br>
+								Il tavolo è stato creato tramite un oggetto box, mentre la tazza è stata creata utilizzando il software Blender. <br>
 								Inoltre verrà avviato il visualizzatore 3D RViz in cui è possibile visualizzare il robot e la nuvola di punti ricavata dal sensore Realsense R200.
-								Da RViz è possibile abilitare il plugin MoveIt(avviato nel file launch) con cui si effettueranno i vari spostamenti.
+								Da RViz è possibile abilitare il plugin MoveIt, avviato nel file launch, con cui si effettueranno i vari spostamenti.
 								<div>
 								<img 
 								src="image/gazebo.png"
@@ -211,7 +210,7 @@
 								<br>
 								</code>
 								MoveIt offre un pacchetto python che gestisce in maniera semplice
-								la pianificazione del movimento, il calcolo dei percorsi cartesiani ed altre funzionalità.In particolare,è stata utilizzata l'interfaccia
+								la pianificazione del movimento, il calcolo dei percorsi cartesiani ed altre funzionalità. In particolare, è stata utilizzata l'interfaccia
 								a riga di comando in cui sono state impartite le varie traiettorie che il robot effettua nell'esperimento.
 								<br>
 								<code>
@@ -228,7 +227,7 @@
 							</p>
 							<h3>Detection clouds points</h3>
 							<p>
-								Usando i comandi sopra citati, si pone il manipolatore al di sopra dell'oggetto interessato(tazza) in modo da essere inquadrato dal sensore.
+								Usando i comandi sopra citati si pone il manipolatore al di sopra dell'oggetto interessato (tazza) in modo da essere inquadrato dal sensore.
 								<br>
 								<code>
 								rosrun realsense_gazebo_plugin SavePointCloud
@@ -240,7 +239,7 @@
 								src="image/Capture.jpg"
 								height ="480" width ="640">
 								</div>
-								Ora è possibile determinare la posa della tazza presente in Gazebo attraverso Objectron di MediaPipe
+								Ora è possibile determinare la posa della tazza presente in Gazebo attraverso Objectron di MediaPipe.	
 								<br>
 								<code>
 								python3 cupobjectrondetection.py
@@ -250,8 +249,8 @@
 								src="image/annotated_image.jpg"
 								height ="480" width ="640">
 								</div>
-                                Questo script ci restituisce un'immagine con la posizione della tazza nello spazio attraverso boundary box 3D,
-								posizione e orientamento degli assi.
+                                Questo script ci restituisce un'immagine con la posizione della tazza nello spazio attraverso boundary box 3D ed il
+                                relativo orientamento degli assi.
 								<br>
 								<a href="#Approfondimento" >Approfondimento</a>
 							</p>
@@ -275,8 +274,8 @@
 								Per verificare la tenuta della presa si sposta il manipolatore dandogli una traiettoria casuale.
 								<div>
 								<img 
-								src=""
-								height ="400" width ="800">
+								src="image/Grasping.png"
+								height ="500" width ="700">
 								</div>
 								Come ulteriore verifica della corretta esecuzione della presa sono i punti di contatto delle pinze sulla tazza.
 							
@@ -308,7 +307,7 @@
                         <div class="content">
                             							
 							<video width = "640" height = "480" controls>
-								<source src = "" type = "video/mkv">
+								<source src = "image/trajectory.mp4" type = "video/mp4">
 							</video>	
 							
                         </div><!--//content-->
@@ -334,7 +333,7 @@
 							tracking confidence che stabilisce la robustezza della soluzione (valori più alti di tracking confidence forniscono una robustezza maggiore a discapito 
 							della velocità di esecuzione).
 							<div class="item">
-								<a href="TutorialObjectron.ipynb" target="_blank">Cup Detection Colab</a>
+								<a href="TutorialObjectron.ipynb" target="_blank">Cup Detection</a>
                             </div>
 							</p>
                                                      
@@ -359,8 +358,8 @@
                              
                 <aside class="blog aside section">
                     <div class="section-inner">
-                        <h2 class="heading"> Riferimenti </h2>
 						<a name = "Riferimenti" > </a>
+                        <h2 class="heading"> Riferimenti </h2>
 						<div class="content">
 							
 							<div class="item">
