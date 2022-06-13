@@ -257,8 +257,29 @@
 							</p>
 							<h3>Grasping</h3>
 							<p>
-							Mancano immagini nuvola di punti + immagine annotata. Da fare tutto il grasping e come immagini la presa. Da checkare i punti di contatto
-							Da ricordarsi di inserire comandi apri pinza + comandi chiudi pinza .
+								(Mancano immagini nuvola di punti + immagine annotata. Da fare tutto il grasping e come immagini la presa. Da checkare i punti di contatto
+								Da ricordarsi di inserire comandi apri pinza + comandi chiudi pinza.)
+								<br>
+								Una volta posizionato il robot al di sopra della tazza, bisogna imporre dei comandi per permettere di aprire le pinze.
+								<br>
+								<code>
+								rostopic pub --once /franka_gripper/move/goal franka_gripper/MoveActionGoal "goal: { width: 0.08, speed: 0.1 }"
+								</code>
+								<br>
+								Dopo aver aperto le pinze si scende in modo tale da posizionarci perfettamente sopra la tazza e successivamente si richiudono le pinze
+								per permettere il grasping.
+								<br>
+								<code>
+								rostopic pub --once /franka_gripper/grasp/goal \franka_gripper/GraspActionGoal \"goal: { width: 0.03, epsilon:{ inner: 0.005, outer: 0.005 }, speed: 0.1, force: 5.0}"
+								</code>
+								<br>
+								Per verificare la tenuta della presa si sposta il manipolatore dandogli una traiettoria casuale.
+								<div>
+								<img 
+								src=""
+								height ="400" width ="800">
+								</div>
+								Come ulteriore verifica della corretta esecuzione della presa sono i punti di contatto delle pinze sulla tazza.
 							
 							</p>	
                         </div><!--//content-->
@@ -303,14 +324,6 @@
 							<p>Fornire esempi di applicazione del metodo con immagini e video</p>
 							
 													
-							<h3>Risultati quantitativi</h3>
-							<p>Fornire una descrizione delle performance del metodo usando
-							delle opportune metriche</p>
-							
-							<p>Per esempio:<br>
-							Fornire su un numero di immagini non inferiore a 30 i dati relativi
-							a FP, FN, TP.							
-							</p>
 							
 							
 							
