@@ -237,8 +237,8 @@
 								Attraverso questo script si riesce a ricavare un'immagine RGB dalla nuvola di punti.
 								<div>
 								<img 
-								src=""
-								height ="400" width ="800">
+								src="image/Capture.jpg"
+								height ="480" width ="640">
 								</div>
 								Ora è possibile determinare la posa della tazza presente in Gazebo attraverso Objectron di MediaPipe
 								<br>
@@ -247,8 +247,8 @@
 								</code>
 								<div>
 								<img 
-								src=""
-								height ="400" width ="800">
+								src="image/annotated_image.jpg"
+								height ="480" width ="640">
 								</div>
                                 Questo script ci restituisce un'immagine con la posizione della tazza nello spazio attraverso boundary box 3D,
 								posizione e orientamento degli assi.
@@ -257,8 +257,7 @@
 							</p>
 							<h3>Grasping</h3>
 							<p>
-								(Mancano immagini nuvola di punti + immagine annotata. Da fare tutto il grasping e come immagini la presa. Da checkare i punti di contatto
-								Da ricordarsi di inserire comandi apri pinza + comandi chiudi pinza.)
+								(Da fare tutto il grasping e come immagini la presa. Da checkare i punti di contatto)								
 								<br>
 								Una volta posizionato il robot al di sopra della tazza, bisogna imporre dei comandi per permettere di aprire le pinze.
 								<br>
@@ -270,7 +269,7 @@
 								per permettere il grasping.
 								<br>
 								<code>
-								rostopic pub --once /franka_gripper/grasp/goal \franka_gripper/GraspActionGoal \"goal: { width: 0.03, epsilon:{ inner: 0.005, outer: 0.005 }, speed: 0.1, force: 5.0}"
+								rostopic pub --once /franka_gripper/grasp/goal \franka_gripper/GraspActionGoal \"goal: { width: 0.04, epsilon:{ inner: 0.002, outer: 0.002 }, speed: 0.05, force: 5.0}"
 								</code>
 								<br>
 								Per verificare la tenuta della presa si sposta il manipolatore dandogli una traiettoria casuale.
@@ -305,27 +304,12 @@
 				
 				<section class="about section">
                     <div class="section-inner">
-                        <h2 class="heading"><a id="dataset"></a>Dataset</h2>
-                        <div class="content">
-                            <p>Descrivere i dati utilizzati fornendo i link per il download</p>
-                            							
-                                                     
-                        </div><!--//content-->
-                    </div><!--//section-inner-->                 
-                </section><!--//section-->
-				
-				<section class="about section">
-                    <div class="section-inner">
                         <h2 class="heading"><a id="training"></a>Risultati</h2>
                         <div class="content">
                             							
-								
-							<h3>Risultati qualitativi</h3>
-							<p>Fornire esempi di applicazione del metodo con immagini e video</p>
-							
-													
-							
-							
+							<video width = "640" height = "480" controls>
+								<source src = "" type = "video/mkv">
+							</video>	
 							
                         </div><!--//content-->
                     </div><!--//section-inner-->                 
@@ -350,7 +334,7 @@
 							tracking confidence che stabilisce la robustezza della soluzione (valori più alti di tracking confidence forniscono una robustezza maggiore a discapito 
 							della velocità di esecuzione).
 							<div class="item">
-								<a href="" target="_blank">Cup Detection Colab</a>
+								<a href="TutorialObjectron.ipynb" target="_blank">Cup Detection Colab</a>
                             </div>
 							</p>
                                                      
