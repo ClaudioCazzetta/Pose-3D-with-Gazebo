@@ -256,29 +256,27 @@
 							</p>
 							<h3>Grasping</h3>
 							<p>
-								(Da fare tutto il grasping e come immagini la presa. Da checkare i punti di contatto)								
-								<br>
-								Una volta posizionato il robot al di sopra della tazza, bisogna imporre dei comandi per permettere di aprire le pinze.
+								Una volta determinata la possibilità di prese dell'oggetto il robot viene posizionato al di sopra della tazza e attraverso l'imposizione di comandi è in grado di  aprire le pinze.
 								<br>
 								<code>
 								rostopic pub --once /franka_gripper/move/goal franka_gripper/MoveActionGoal "goal: { width: 0.08, speed: 0.1 }"
 								</code>
 								<br>
-								Dopo aver aperto le pinze si scende in modo tale da posizionarci perfettamente sopra la tazza e successivamente si richiudono le pinze
-								per permettere il grasping.
+								Dopo aver aperto le pinze il robot inizia la discesa fino all'altezza della tazza, posizione dalla quale si effetua il grasping tramite la chiusura della pinza e l'applicazione della forza lavoro.
 								<br>
 								<code>
 								rostopic pub --once /franka_gripper/grasp/goal franka_gripper/GraspActionGoal "goal: { width: 0.04, epsilon:{ inner: 0.02, outer: 0.02 }, speed: 0.05, force: 5.0}"
 								</code>
 								<br>
-								Per verificare la tenuta della presa si sposta il manipolatore dandogli una traiettoria casuale.
+								Per verificare la tenuta della presa è possibile abilitare il 'contacts' in Gazebo che evidenzia i punti in cui è applicata la forza.
+								<br> 
+								Per concludere la simulazione la tazza viene spostata sulla lastra blu, come è ripostato nei 
+								<a href="#Risultati" >risultati</a>.
 								<div>
 								<img 
 								src="image/Grasping.png"
 								height ="500" width ="700">
-								</div>
-								Come ulteriore verifica della corretta esecuzione della presa sono i punti di contatto delle pinze sulla tazza.
-							
+								</div>							
 							</p>	
                         </div><!--//content-->
                     </div><!--//section-inner-->                 
@@ -303,6 +301,7 @@
 				
 				<section class="about section">
                     <div class="section-inner">
+						<a name = "Risultati" > </a>
                         <h2 class="heading"><a id="training"></a>Risultati</h2>
                         <div class="content">
                             							
@@ -321,14 +320,14 @@
 						<div class="content">
 							<p align = "justify">
 							MediaPipe Objectron rileva oggetti in immagini 2D e stima le loro pose attraverso un modello di ML addestrato 
-							sul set di dati Objectron. Il set di dati Objectron è una raccolta di brevi video clip incentrati sugli oggetti. 
-							In ogni video, la telecamera si muove attorno all'oggetto, catturandolo da diverse angolazioni. 
-							I dati contengono anche riquadri di delimitazione 3D annotati manualmente per ciascun oggetto, che descrivono la posizione, l'orientamento e le dimensioni dell'oggetto. 
-							Il set di dati sulla tazza  è costituito da 2204 video clip annotati integrati con 546k annotazioni.
-							MediaPipe,inoltre, fornisce anche un api da cui è stato ricavato il Colab utilizzato.
+							sul set di dati Objectron. Il set di dati Objectron è una raccolta di brevi videoclip incentrati sugli oggetti. 
+							In ogni video la telecamera si muove attorno all'oggetto catturandolo da diverse angolazioni. 
+							I dati contengono anche riquadri di delimitazione 3D annotati manualmente per ciascun oggetto che descrivono la posizione, l'orientamento e le dimensioni dello stesso. 
+							Il set di dati sulla tazza  è costituito da 2204 videoclip integrati con 546k annotazioni.
+							MediaPipe inoltre fornisce anche un'api da cui è stato ricavato lo script utilizzato.
 							<br>
 							Nel Colab creato c'è la possibilità di effettuare la detection
-							sia su immagini statiche e sia su video.Inoltre è possibile settare il numero di oggetti da individuare. Come in ogni detection è possibile configurare
+							sia su immagini statiche che su video. Inoltre è possibile settare il numero di oggetti da individuare. Come in ogni detection è possibile configurare
 							il valore di confidenza (detection confidence) che permette di stabilire se il rilevamento è avvenuto correttamente o meno. Si può impostare anche il
 							tracking confidence che stabilisce la robustezza della soluzione (valori più alti di tracking confidence forniscono una robustezza maggiore a discapito 
 							della velocità di esecuzione).
