@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- VeP http://web.unibas.it/bloisi/corsi/visione-e-percezione.html -->
 <html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Object 3D</title>
+    <title>3D pose estimation</title>
 	<!-- Meta -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,12 +28,12 @@
 <body>
     <!-- ******HEADER****** --> 
     <header class="header">
-        <div class="container">                       
-            <img class="profile-image img-responsive pull-left" src="" alt="Inserire immagine qui" hegiht="100" width="100">
+        <div class="container" >                       
+            <img class="profile-image img-responsive pull-left" src="image/franka.jpeg" alt="franka" hegiht="200" width="200">
             <div class="profile-content pull-left">
-                <h1 class="name">Object 3D</h1>
-                <h2 class="desc">Tutorial in MediaPipe e grasping con Franka Emika</h2>
-            </div>
+                <h1 class="name" align = "center">3D pose estimation</h1>
+                <h2 class="desc" align = "center">Stima della posizione con MediaPipe <br> e simulazione del grasping con Franka Emika</h2>
+            </div>	
 
             <div class="profile-content pull-right">
 				<img class="profile-image img-responsive pull-left"
@@ -143,9 +143,9 @@
                         <h2 class="heading"><a id="dataset"></a>Metodi</h2>
                         <div class="content">
 							<h3>Creazione ambiente di lavoro</h3>
-							<p> Inizialmente è stato creato un ambiente di lavoro (catkin) in ROS Noetic 
-								<code>
+							<p> Inizialmente è stato creato un ambiente di lavoro (catkin) in ROS Noetic
 								<br>
+								<code>
 								(Nella cartella progetto)
 								<br>
 								source /opt/ros/noetic/setup.bash
@@ -213,8 +213,8 @@
 								MoveIt offre un pacchetto python che gestisce in maniera semplice
 								la pianificazione del movimento, il calcolo dei percorsi cartesiani ed altre funzionalità.In particolare,è stata utilizzata l'interfaccia
 								a riga di comando in cui sono state impartite le varie traiettorie che il robot effettua nell'esperimento.
-								<code>
 								<br>
+								<code>
 								use panda_arm
 								<br>
 								go forward/left/up/down/right/backward -distance-
@@ -229,9 +229,9 @@
 							<h3>Detection clouds points</h3>
 							<p>
 								Usando i comandi sopra citati, si pone il manipolatore al di sopra dell'oggetto interessato(tazza) in modo da essere inquadrato dal sensore.
-								<code>
 								<br>
-								rosrun realsense_gazebo_plugin SaveCloudPoint
+								<code>
+								rosrun realsense_gazebo_plugin SavePointCloud
 								<br>
 								</code>
 								Attraverso questo script si riesce a ricavare un'immagine RGB dalla nuvola di punti.
@@ -241,8 +241,8 @@
 								height ="400" width ="800">
 								</div>
 								Ora è possibile determinare la posa della tazza presente in Gazebo attraverso Objectron di MediaPipe
-								<code>
 								<br>
+								<code>
 								python3 cupobjectrondetection.py
 								</code>
 								<div>
