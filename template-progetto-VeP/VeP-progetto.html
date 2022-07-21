@@ -62,7 +62,7 @@
                         <div class="content">
                             <p align = "justify">Rilevamento di oggetti in immagini 2D
 							e stima delle loro posizioni 3D attraverso un modello di ML
-							addestrato sul set di dati Objectron. Le immagini 2D vengono
+							addestrato sul set di dati <a href="https://google.github.io/mediapipe/solutions/objectron.html" target="_blank">MediaPipe Objectron</a>. Le immagini 2D vengono
 							prelevate dalle nuvole di punti (clouds points).
 							<br>
 							Per analizzare questo problema il presente elaborato progettuale consta di due parti:
@@ -92,7 +92,10 @@
 							La detection di oggetti 3D da immagini 2D è un problema impegnativo 
 							a causa della mancanza di dati e della diversità di aspetti e forme degli oggetti all'interno di una categoria.
 							</p>
-
+							
+							<iframe width = "640" height = "480" 
+								src = "https://www.youtube.com/embed/iOrY1Uy6o04">
+							</iframe>
 							
                         </div><!--//content-->
                     </div><!--//section-inner-->                 
@@ -105,7 +108,7 @@
 							<ol>
 								<li>Simulazione del robot Franka Emika Panda </li>
 								<li>Cattura di immagini 2D da nuvole di punti </li>
-								<li>Stima della posa attraverso Objectron di MediaPipe</li>
+								<li>Stima della posa attraverso <a href="https://google.github.io/mediapipe/solutions/objectron.html" target="_blank">MediaPipe Objectron</a></li>
 								<li>Grasping attraverso il robot in Gazebo</li>
 							</ol>                  
                         </div><!--//content-->
@@ -125,13 +128,13 @@
 									<li>Python 3.7</li>
 								</ul>
 								<li>Google Colab</li>
-								<li>MediaPipe</li>
-								<li>ROS Noetic</li>
-								<li>OpenCV</li>		
-								<li>Gazebo</li>
-								<li>MoveIt</li>
-								<li>RViz</li>
-								<li>Blender</li>
+								<li><a href="https://google.github.io/mediapipe/solutions/objectron.html" target="_blank">MediaPipe Objectron</a></li>
+								<li><a href="http://wiki.ros.org/noetic" target="_blank">ROS Noetic</a></li>
+								<li><a href="http://opencv.org/" target="_blank">OpenCV</a></li>		
+								<li><a href="https://gazebosim.org/home" target="_blank">Gazebo</a></li>
+								<li><a href="http://docs.ros.org/en/kinetic/api/moveit_tutorials/html/doc/getting_started/getting_started.html" target="_blank">MoveIt Plugin</a></li>
+								<li><a href="http://wiki.ros.org/rviz" target="_blank">RViz</a></li>
+								<li><a href="https://www.blender.org/" target="_blank">Blender</a></li>
                             </ul>	                                                   
                         </div><!--//content-->
                     </div><!--//section-inner-->                 
@@ -143,7 +146,7 @@
                         <h2 class="heading"><a id="dataset"></a>Metodi</h2>
                         <div class="content" >
 							<h3>Creazione ambiente di lavoro</h3>
-							<p> Inizialmente è stato creato un ambiente di lavoro (catkin) in ROS Noetic
+							<p> Inizialmente è stato creato un ambiente di lavoro (catkin) in <a href="http://wiki.ros.org/noetic" target="_blank">ROS Noetic</a>
 								<br>
 								<code>
 								(Nella cartella progetto)
@@ -168,9 +171,9 @@
 								Successivamente sono state installate tutte le varie dipendenze e packages attraverso il tutorial fornito dal
 								sito relativo al robot Franka Emika.
 								<br>
-								Oltre alla visualizzazione in Gazebo ed in RViz, è stato installato il plugin MoveIt per facilitare i movimenti.
+								Oltre alla visualizzazione in <a href="https://gazebosim.org/home" target="_blank">Gazebo</a> ed in <a href="http://wiki.ros.org/rviz" target="_blank">RViz</a>, è stato installato il <a href="http://docs.ros.org/en/kinetic/api/moveit_tutorials/html/doc/getting_started/getting_started.html" target="_blank">Plugin MoveIt</a> per facilitare i movimenti.
 								<br>
-								All'estremità del braccio è stato posto un sensore Realsense R200 affinchè si possano effettuare delle acquisizioni di nuvole di punti degli oggetti in Gazebo.
+								All'estremità del braccio è stato posto un sensore Realsense R200 affinchè si possano effettuare delle acquisizioni di nuvole di punti degli oggetti in <a href="https://gazebosim.org/home" target="_blank">Gazebo</a>.
 								<br>
 								I link delle varie installazioni sono riportati nel settore relativo ai 
 								<a href="#Riferimenti" >Riferimenti</a>.
@@ -181,10 +184,10 @@
 								roslaunch panda_moveit_config demo_gazebo.launch
 								<br>
 								</code>
-								Avviando il file launch si avvia il simulatore Gazebo nel cui mondo troveremo i modelli di Franka Emika Panda, tavolo, lastre di appoggio, tazza, illuminazione basata sul sole ed il sensore Realsense R200. <br>
-								Il tavolo è stato creato tramite un oggetto box, mentre la tazza è stata creata utilizzando il software Blender. <br>
-								Inoltre verrà avviato il visualizzatore 3D RViz in cui è possibile visualizzare il robot e la nuvola di punti ricavata dal sensore Realsense R200.
-								Da RViz è possibile abilitare il plugin MoveIt, avviato nel file launch, con cui si effettueranno i vari spostamenti.
+								Avviando il file launch si avvia il simulatore <a href="https://gazebosim.org/home" target="_blank">Gazebo</a> nel cui mondo troveremo i modelli di Franka Emika Panda, tavolo, lastre di appoggio, tazza, illuminazione basata sul sole ed il sensore Realsense R200. <br>
+								Il tavolo è stato creato tramite un oggetto box, mentre la tazza è stata creata utilizzando il software <a href="https://www.blender.org/" target="_blank">Blender</a>. <br>
+								Inoltre verrà avviato il visualizzatore 3D <a href="http://wiki.ros.org/rviz" target="_blank">RViz</a> in cui è possibile visualizzare il robot e la nuvola di punti ricavata dal sensore Realsense R200.
+								Da <a href="http://wiki.ros.org/rviz" target="_blank">RViz</a> è possibile abilitare il <a href="http://docs.ros.org/en/kinetic/api/moveit_tutorials/html/doc/getting_started/getting_started.html" target="_blank">Plugin MoveIt</a>, avviato nel file launch, con cui si effettueranno i vari spostamenti.
 								<div>
 								<img 
 								src="image/gazebo.png"
@@ -209,7 +212,7 @@
 								rosrun moveit_commander moveit_commander_cmdline.py
 								<br>
 								</code>
-								MoveIt offre un pacchetto python che gestisce in maniera semplice
+								<a href="http://docs.ros.org/en/kinetic/api/moveit_tutorials/html/doc/getting_started/getting_started.html" target="_blank">MoveIt Plugin</a> offre un pacchetto python che gestisce in maniera semplice
 								la pianificazione del movimento, il calcolo dei percorsi cartesiani ed altre funzionalità. In particolare, è stata utilizzata l'interfaccia
 								a riga di comando in cui sono state impartite le varie traiettorie che il robot effettua nell'esperimento.
 								<br>
@@ -239,7 +242,7 @@
 								src="image/Capture.jpg"
 								height ="480" width ="640">
 								</div>
-								Ora è possibile determinare la posa della tazza presente in Gazebo attraverso Objectron di MediaPipe.	
+								Ora è possibile determinare la posa della tazza presente in <a href="https://gazebosim.org/home" target="_blank">Gazebo</a> attraverso <a href="https://google.github.io/mediapipe/solutions/objectron.html" target="_blank">MediaPipe Objectron</a>.	
 								<br>
 								<code>
 								python3 cupobjectrondetection.py
@@ -268,7 +271,7 @@
 								rostopic pub --once /franka_gripper/grasp/goal franka_gripper/GraspActionGoal "goal: { width: 0.04, epsilon:{ inner: 0.02, outer: 0.02 }, speed: 0.05, force: 5.0}"
 								</code>
 								<br>
-								Per verificare la tenuta della presa è possibile abilitare il 'contacts' in Gazebo che evidenzia i punti in cui è applicata la forza.
+								Per verificare la tenuta della presa è possibile abilitare il 'contacts' in <a href="https://gazebosim.org/home" target="_blank">Gazebo</a> che evidenzia i punti in cui è applicata la forza.
 								<br> 
 								Per concludere la simulazione la tazza viene spostata sulla lastra blu, come è ripostato nei 
 								<a href="#Risultati" >risultati</a>.
@@ -319,7 +322,7 @@
 						<a name = "Approfondimento" > </a>
 						<div class="content">
 							<p align = "justify">
-							MediaPipe Objectron rileva oggetti in immagini 2D e stima le loro pose attraverso un modello di ML addestrato 
+							<a href="https://google.github.io/mediapipe/solutions/objectron.html" target="_blank">MediaPipe Objectron</a> rileva oggetti in immagini 2D e stima le loro pose attraverso un modello di ML addestrato 
 							sul set di dati Objectron. Il set di dati Objectron è una raccolta di brevi videoclip incentrati sugli oggetti. 
 							In ogni video la telecamera si muove attorno all'oggetto catturandolo da diverse angolazioni. 
 							I dati contengono anche riquadri di delimitazione 3D annotati manualmente per ciascun oggetto che descrivono la posizione, l'orientamento e le dimensioni dello stesso. 
@@ -390,6 +393,14 @@
 							
 							<div class="item">
 								<a href="https://www.blender.org/" target="_blank">Blender</a>
+							</div>
+							
+							<div class="item">
+								<a href="https://gazebosim.org/home" target="_blank">Gazebo</a>
+							</div>
+							
+							<div class="item">
+								<a href="http://wiki.ros.org/rviz" target="_blank">RViz</a>
 							</div>
 							
                         </div><!--//content-->
