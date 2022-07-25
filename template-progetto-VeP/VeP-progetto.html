@@ -304,13 +304,51 @@
 				
 				<section class="about section">
                     <div class="section-inner">
-						<a name = "Risultati" > </a>
-                        <h2 class="heading"><a id="training"></a>Risultati</h2>
+						<a name = "Risultati qualitativi" > </a>
+                        <h2 class="heading"><a id="training"></a>Risultati qualitativi</h2>
                         <div class="content">
-                            							
+                        	<p>
+                            	Il seguente video mostra una presa della tezza dal robot Franka Emika Panda in simulazione su Gazebo.
+                            </p>
+							<br>
+
 							<video width = "640" height = "480" controls>
 								<source src = "image/trajectory.mp4" type = "video/mp4">
 							</video>	
+							<p>
+							<br>
+								Il video seguente mostra ciò che viene visualizzato dal sensore sovracitato in RGB.
+							<video width = "640" height = "480" controls>
+								<source src = "image/Rgb.MP4" type = "video/mp4">
+							</video>	
+							</p>
+							<br>
+							<p>
+								Infine, viene mostrata in blender la nuvola di punti da diverse angolazioni.
+							<video width = "640" height = "480" controls>
+								<source src = "image/Blender Nuvola di punti.mp4" type = "video/mp4">
+							</video>	
+							</p>
+							
+                        </div><!--//content-->
+                    </div><!--//section-inner-->                 
+                </section><!--//section-->
+                
+                <section class="about section">
+                    <div class="section-inner">
+						<a name = "Risultati quantitativi" > </a>
+                        <h2 class="heading"><a id="training"></a>Risultati quantitativi</h2>
+                        <div class="content">
+                        	<p>
+                            	Sono stati effettuati diverse traiettorie con diverse posizioni dell'oggetto in cui sono stati verificati sia successi (come sopra mostrato) che insuccessi.
+                            	Gli insuccessi riscontrati possono dipendere da diverse cause:
+                            	<ol> 
+                            		<li>Posizione dell'oggetto: in determinato posizioni la tazza non viene riconosciuta in maniera adeguata dal detector oppure perde stabilità nella simulazione;</li>
+                            		<li>Forza della presa: in base alle caratteristiche fisiche assegnate all'obj va regolata l'intensità della forza delle pinze del manipolatore;</li>
+                            		<li>Gradi di libertà dei giunti del manipolatore.</li>
+                            	</ol>
+
+                            </p>
 							
                         </div><!--//content-->
                     </div><!--//section-inner-->                 
